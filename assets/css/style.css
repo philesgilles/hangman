@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background: rgb(240, 228, 215);
+  color: #202020;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  font-family: 'Sigmar One', cursive;
+}
+
+header p {
+  font-size: 1.5em;
+}
+
+.mainContent {
+  width: 90%;
+  max-width: 750px;
+  text-align: center;
+  margin: auto;
+}
+
+.image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.image img {
+  width: 250px;
+  margin: auto;
+}
+
+#letters ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#word {
+  font-size: 3em;
+}
+
+#letters ul li {
+  padding: 8px;
+  font-size: 3em;
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#gameOver {
+  padding-top: 20px;
+}
+
+#gameControl {
+  padding-top: 10px;
+  width: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 20px;
+}
+
+#gameControl p {
+  padding-right: 10px;
+  font-size: 1.4em;
+}
+
+#gameControl img {
+  width: 30px;
+  height: 30px;
+  transition: 1.5s;
+  -webkit-transition: 1.5s;
+  -moz-transition: 1.5s;
+  -ms-transition: 1.5s;
+  -o-transition: 1.5s;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+#gameControl img:hover {
+  -webkit-transform: rotate(800deg);
+  -moz-transform: rotate(800deg);
+  -o-transform: rotate(800deg);
+  -ms-transform: rotate(800deg);
+  transform: rotate(800deg);
+}
+
+#gameControl p {
+  margin: 0;
+}
