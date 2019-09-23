@@ -656,6 +656,7 @@ let answerArray = [];
 let counter = 1;
 let word;
 const reset = () => {
+  answerArray = [];
   document.body.style.background = 'rgb(240, 228, 215)';
   let random = Math.floor(Math.random() * words.length);
   word = words[random];
