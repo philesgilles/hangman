@@ -1,3 +1,4 @@
+// * SETUP VARIABLES
 const words = [
   'damaged',
   'earsplitting',
@@ -657,6 +658,8 @@ let scoreToWin = [];
 let counter = 1;
 let word;
 
+// * DECLARE FUNCTIONS
+// Reset the game
 const reset = () => {
   answerArray = [];
   document.body.style.background = 'rgb(240, 228, 215)';
@@ -676,13 +679,21 @@ const reset = () => {
   let lis = document.getElementsByTagName('li');
   for (let j = 0; j < lis.length; j++) {
     lis[j].style.textDecoration = 'none';
-    lis[j].style.border = 'none';
     lis[j].style.color = '#202020';
+    lis[j].removeAttribute('disable');
   }
 };
-
+// check the letter
 const checkLetters = id => {
+  // ? Check if letter was already pressed
+  if (document.getElementById(id).getAttribute('disable') == 'true') {
+    return;
+  }
   let goodLetter = false;
+  // ? Set that letter was pressed
+  document.getElementById(id).setAttribute('disable', true);
+
+  // * Check if lettre is in the word
   for (let i = 0; i < word.length; i++) {
     if (word[i] == id) {
       answerArray[i] = id;
@@ -695,13 +706,11 @@ const checkLetters = id => {
     document.getElementById(id).style.textDecoration = 'line-through';
     document.getElementById(id).style.color = '#888';
   } else {
-    document.getElementById(id).style.border = '1px solid green';
+    document.getElementById(id).style.textDecoration = 'underline';
     document.getElementById(id).style.color = 'green';
   }
-  document.getElementById('word').innerHTML =
-    '<p>' + answerArray.join(' ') + '</p>';
-  let imgSrc = `assets/img/${counter}.png`;
-  document.getElementById('image').setAttribute('src', imgSrc);
+
+  //IF YOU WIN
   if (scoreToWin === 0) {
     document.body.style.background = 'rgb(89, 151, 83)';
     document.getElementById('letters').style.display = 'none';
@@ -711,6 +720,13 @@ const checkLetters = id => {
     document.getElementById('image').setAttribute('src', 'assets/img/win.png');
     return;
   }
+
+  document.getElementById('word').innerHTML =
+    '<p>' + answerArray.join(' ') + '</p>';
+  let imgSrc = `assets/img/${counter}.png`;
+  document.getElementById('image').setAttribute('src', imgSrc);
+
+  //IF YOU LOOSE
   if (counter === 7) {
     document.body.style.background = 'rgb(184, 81, 81)';
     document.getElementById('letters').style.display = 'none';
@@ -722,7 +738,7 @@ const checkLetters = id => {
   }
 };
 
-//Setup Start
+//Setup Start and cycle trough
 
 (() => {
   reset();
