@@ -704,11 +704,16 @@ const checkLetters = id => {
   if (!goodLetter) {
     counter++;
     document.getElementById(id).style.textDecoration = 'line-through';
-    document.getElementById(id).style.color = '#888';
+    document.getElementById(id).style.color = 'rgba(90, 90, 90, 0.4)';
   } else {
     document.getElementById(id).style.textDecoration = 'underline';
     document.getElementById(id).style.color = 'green';
   }
+
+  document.getElementById('word').innerHTML =
+    '<p>' + answerArray.join(' ') + '</p>';
+  let imgSrc = `assets/img/${counter}.png`;
+  document.getElementById('image').setAttribute('src', imgSrc);
 
   //IF YOU WIN
   if (scoreToWin === 0) {
@@ -720,11 +725,6 @@ const checkLetters = id => {
     document.getElementById('image').setAttribute('src', 'assets/img/win.png');
     return;
   }
-
-  document.getElementById('word').innerHTML =
-    '<p>' + answerArray.join(' ') + '</p>';
-  let imgSrc = `assets/img/${counter}.png`;
-  document.getElementById('image').setAttribute('src', imgSrc);
 
   //IF YOU LOOSE
   if (counter === 7) {
