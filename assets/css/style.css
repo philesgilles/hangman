@@ -52,6 +52,12 @@ header p {
   list-style: none;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.1s ease-in-out;
+}
+
+#letters ul li:hover {
+  transform: scale(1.2);
+  text-shadow: 1px 3px 0 #969696a4, 1px 13px 5px #aba8a894;
 }
 
 #gameOver {
