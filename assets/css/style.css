@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Patrick Hand', cursive;
-  background: rgb(240, 228, 215);
+  background: rgb(217, 240, 215);
   color: #202020;
 }
 
@@ -30,7 +30,8 @@ header p {
   margin-bottom: 20px;
 }
 .image img {
-  width: 250px;
+  height: 250px;
+
   margin: auto;
 }
 

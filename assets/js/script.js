@@ -653,11 +653,14 @@ const words = [
 ];
 
 let answerArray = [];
+let scoreToWin = [];
 let counter = 1;
 let word;
+
 const reset = () => {
   answerArray = [];
   document.body.style.background = 'rgb(240, 228, 215)';
+  document.getElementById('title').innerText = 'Hangman';
   let random = Math.floor(Math.random() * words.length);
   word = words[random];
   for (let i = 0; i < word.length; i++) {
@@ -666,6 +669,7 @@ const reset = () => {
   document.getElementById('word').innerHTML =
     '<p>' + answerArray.join(' ') + '</p>';
   counter = 1;
+  scoreToWin = word.length;
   document.getElementById('image').setAttribute('src', 'assets/img/1.png');
   document.getElementById('letters').style.display = 'block';
   document.getElementById('gameOver').style.display = 'none';
@@ -683,6 +687,7 @@ const checkLetters = id => {
     if (word[i] == id) {
       answerArray[i] = id;
       goodLetter = true;
+      scoreToWin--;
     }
   }
   if (!goodLetter) {
@@ -697,10 +702,21 @@ const checkLetters = id => {
     '<p>' + answerArray.join(' ') + '</p>';
   let imgSrc = `assets/img/${counter}.png`;
   document.getElementById('image').setAttribute('src', imgSrc);
+  if (scoreToWin === 0) {
+    document.body.style.background = 'rgb(89, 151, 83)';
+    document.getElementById('letters').style.display = 'none';
+    document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('gameStatus').innerText = 'You won !';
+    document.getElementById('title').innerText = 'FreeMan';
+    document.getElementById('image').setAttribute('src', 'assets/img/win.png');
+    return;
+  }
   if (counter === 7) {
     document.body.style.background = 'rgb(184, 81, 81)';
     document.getElementById('letters').style.display = 'none';
     document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('gameStatus').innerText = 'GAME OVER !';
+    document.getElementById('title').innerText = 'DeadMan';
     document.getElementById('word').innerHTML =
       '<p>' + word.split('').join(' ') + '</p>';
   }
